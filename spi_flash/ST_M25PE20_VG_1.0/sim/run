@@ -1,0 +1,19 @@
+#!/bin/csh -f
+
+set PRJDIR  = ..
+set CODEDIR = $PRJDIR/code
+set INCDIR  = $PRJDIR/code
+set STIMDIR = $PRJDIR/stim
+set HDLPATH = hdl.var
+set CDSPATH = cds.lib
+
+mkdir worklib
+
+#CODE Compile
+ncvlog -work worklib -cdslib $CDSPATH -hdlvar $HDLPATH -MESSAGES -NOCOPYRIGHT -LINEDEBUG $CODEDIR/M25PE20_macro.v -INCDIR $INCDIR $CODEDIR/M25PE20_memory.v -INCDIR $INCDIR $STIMDIR/M25PE20_driver.v -INCDIR $INCDIR $STIMDIR/M25PE20_testbench.v
+
+# Elaborate
+ncelab -work worklib -cdslib $CDSPATH -hdlvar $HDLPATH -mess -NOWARN MEMODR -IEEE1364 worklib.M25PE20_TB -access +r
+
+# Simulate
+ncsim -cdslib $CDSPATH -hdlvar $HDLPATH worklib.M25PE20_TB

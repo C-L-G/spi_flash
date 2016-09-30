@@ -1,0 +1,3 @@
+include $CDS_INST_DIR/tools/inca/files/hdl.var
+define NCSIMRC  ./trace
+define WORK worklib
