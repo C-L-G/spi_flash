@@ -48,7 +48,7 @@ modport master(
     output                  wr_vld          ,
     output                  wr_data         ,
     input                   wr_ready        ,
-    input                   wr_last         ,
+    output                  wr_last         ,
     //--- read port
     input                   rd_vld          ,
     output                  rd_ready        ,
@@ -71,7 +71,7 @@ modport slaver(
     input                   wr_vld          ,
     input                   wr_data         ,
     output                  wr_ready        ,
-    output                  wr_last         ,
+    input                   wr_last         ,
     //--- read port
     input                   rd_ready        ,
     output                  rd_vld          ,

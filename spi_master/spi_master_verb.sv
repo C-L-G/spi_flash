@@ -36,7 +36,7 @@ module spi_master_verb #(
     input                   wr_vld          ,
     input [SSIZE*CSNUM-1:0] wr_data         ,
     output                  wr_ready        ,
-    output                  wr_last         ,
+    input                   wr_last         ,   //unused
     //--- read port
     input                   rd_clk          ,
     input                   rd_rst_n        ,
@@ -137,7 +137,7 @@ serial #(
 /*  input                 */  .wr_vld           (wr_en  && wr_vld   ),
 /*  input[SSIZE*CSNUM-1:0]*/  .wr_data          (wr_data            ),
 /*  output                */  .wr_ready         (wr_ready           ),
-/*  output                */  .wr_last          (wr_last            ),
+/*  output                */  .wr_last          (/*wr_last*/            ),
 /*  input                 */  .rd_clk           (spi_dr_clock       ),
 /*  input                 */  .rd_en            (trs_data_flag      ),
 /*  input                 */  .rd_rst_n         (spi_dr_rst_n && !rst_fifo       ),
